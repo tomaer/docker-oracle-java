@@ -64,5 +64,5 @@ after_success:
       #docker push tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk-dcevm;
       #docker push tomaer/oracle-java:7-edge-utc-aliyun-80b15-server-jre;
       
-      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-server-jre
+      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-server-jre;
     fi
