@@ -1,0 +1,29 @@
+sudo: required
+language: c
+
+services:
+  - docker
+
+before_install:
+  - docker info
+  - docker build -f X86/7/gmt8/80b15/jdk/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-jdk .
+  - docker build -f X86/7/gmt8/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-jdk-dcevm .
+  - docker build -f X86/7/gmt8/80b15/server-jre/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-server-jre .
+
+  - docker build -f X86/7/gmt8-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-jdk .
+  - docker build -f X86/7/gmt8-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-jdk-dcevm .
+  - docker build -f X86/7/gmt8-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-server-jre .
+
+
+script:
+  - docker images
+  #- docker run -it --rm anapsix/alpine-java java -version
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push tomaer/alpine:edge-gmt8-aliyun;
+      docker push tomaer/alpine:edge-utc-aliyun;
+      docker push tomaer/alpine:edge-gmt8;
+      docker push tomaer/alpine:edge-utc;
+    fi
