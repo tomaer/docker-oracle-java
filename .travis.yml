@@ -6,16 +6,16 @@ services:
 
 before_install:
   - docker info
-  
-  - docker build -f X86/8/gmt8-aliyun/92b14/unlimited/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-unlimited-server-jre .
-  - docker build -f X86/8/gmt8-aliyun/92b14/unlimited/jdk/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-unlimited-jdk .
-  - docker build -f X86/8/gmt8-aliyun/92b14/standard/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-standard-server-jre .
-  - docker build -f X86/8/gmt8-aliyun/92b14/standard/jdk/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-standard-jdk .
 
   - docker build -f X86/8/gmt8-aliyun/131b11/unlimited/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-server-jre .
   - docker build -f X86/8/gmt8-aliyun/131b11/unlimited/jdk/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-jdk .
   - docker build -f X86/8/gmt8-aliyun/131b11/standard/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-standard-server-jre .
   - docker build -f X86/8/gmt8-aliyun/131b11/standard/jdk/Dockerfile -t tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-standard-jdk .
+
+  - docker build -f ARM/8/gmt8-aliyun/131b11/unlimited/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-unlimited-server-jre .
+  - docker build -f ARM/8/gmt8-aliyun/131b11/unlimited/jdk/Dockerfile -t tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-unlimited-jdk .
+  - docker build -f ARM/8/gmt8-aliyun/131b11/standard/server-jre/Dockerfile -t tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-standard-server-jre .
+  - docker build -f ARM/8/gmt8-aliyun/131b11/standard/jdk/Dockerfile -t tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-standard-jdk .
 
 script:
   - docker images
@@ -24,14 +24,13 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-
-      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-unlimited-server-jre;
-      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-unlimited-jdk;
-      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-standard-server-jre;
-      docker push tomaer/oracle-java:8-edge-gmt8-aliyun-92b14-standard-jdk;
-
       docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-server-jre;
       docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-unlimited-jdk;
       docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-standard-server-jre;
       docker push tomaer/oracle-java:8-edge-gmt8-aliyun-131b11-standard-jdk;
+
+      docker push tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-unlimited-server-jre;
+      docker push tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-unlimited-jdk;
+      docker push tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-standard-server-jre;
+      docker push tomaer/oracle-java:8-edge-arm-gmt8-aliyun-131b11-standard-jdk;
     fi
