@@ -6,14 +6,21 @@ services:
 
 before_install:
   - docker info
-  - docker build -f X86/7/gmt8/80b15/jdk/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-jdk .
-  - docker build -f X86/7/gmt8/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-jdk-dcevm .
-  - docker build -f X86/7/gmt8/80b15/server-jre/Dockerfile -t tomaer/oracle-java:edge-gmt8-80b15-server-jre .
+  - docker build -f X86/7/gmt8/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-80b15-jdk .
+  - docker build -f X86/7/gmt8/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-80b15-jdk-dcevm .
+  - docker build -f X86/7/gmt8/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-80b15-server-jre .
 
-  - docker build -f X86/7/gmt8-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-jdk .
-  - docker build -f X86/7/gmt8-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-jdk-dcevm .
-  - docker build -f X86/7/gmt8-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:edge-gmt8-aliyun-80b15-server-jre .
+  - docker build -f X86/7/gmt8-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-jdk .
+  - docker build -f X86/7/gmt8-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-jdk-dcevm .
+  - docker build -f X86/7/gmt8-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-server-jre .
 
+  - docker build -f X86/7/utc/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-utc-80b15-jdk .
+  - docker build -f X86/7/utc/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-utc-80b15-jdk-dcevm .
+  - docker build -f X86/7/utc/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-utc-80b15-server-jre .
+
+  - docker build -f X86/7/utc-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk .
+  - docker build -f X86/7/utc-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk-dcevm .
+  - docker build -f X86/7/utc-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-utc-aliyun-80b15-server-jre .
 
 script:
   - docker images
