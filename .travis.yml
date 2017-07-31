@@ -22,6 +22,23 @@ before_install:
   - docker build -f X86/7/utc-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk-dcevm .
   - docker build -f X86/7/utc-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-utc-aliyun-80b15-server-jre .
 
+
+  #- docker build -f ARM/7/gmt8/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-80b15-jdk .
+  #- docker build -f ARM/7/gmt8/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-80b15-jdk-dcevm .
+  #- docker build -f ARM/7/gmt8/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-80b15-server-jre .
+
+  #- docker build -f ARM/7/gmt8-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-aliyun-80b15-jdk .
+  #- docker build -f ARM/7/gmt8-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-aliyun-80b15-jdk-dcevm .
+  #- docker build -f ARM/7/gmt8-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-arm-gmt8-aliyun-80b15-server-jre .
+
+  #- docker build -f ARM/7/utc/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-80b15-jdk .
+  #- docker build -f ARM/7/utc/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-80b15-jdk-dcevm .
+  #- docker build -f ARM/7/utc/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-80b15-server-jre .
+
+  #- docker build -f ARM/7/utc-aliyun/80b15/jdk/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-aliyun-80b15-jdk .
+  #- docker build -f ARM/7/utc-aliyun/80b15/jdk-dcevm/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-aliyun-80b15-jdk-dcevm .
+  #- docker build -f ARM/7/utc-aliyun/80b15/server-jre/Dockerfile -t tomaer/oracle-java:7-edge-arm-utc-aliyun-80b15-server-jre .
+
 script:
   - docker images
   #- docker run -it --rm anapsix/alpine-java java -version
@@ -29,8 +46,21 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push tomaer/alpine:edge-gmt8-aliyun;
-      docker push tomaer/alpine:edge-utc-aliyun;
-      docker push tomaer/alpine:edge-gmt8;
-      docker push tomaer/alpine:edge-utc;
+
+      docker push tomaer/oracle-java:7-edge-gmt8-80b15-jdk;
+      docker push tomaer/oracle-java:7-edge-gmt8-80b15-jdk-dcevm;
+      docker push tomaer/oracle-java:7-edge-gmt8-80b15-server-jre;
+
+      docker push tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-jdk;
+      docker push tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-jdk-dcevm;
+      docker push tomaer/oracle-java:7-edge-gmt8-aliyun-80b15-server-jre;
+
+      docker push tomaer/oracle-java:7-edge-utc-80b15-jdk;
+      docker push tomaer/oracle-java:7-edge-utc-80b15-jdk-dcevm;
+      docker push tomaer/oracle-java:7-edge-utc-80b15-server-jre;
+
+      docker push tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk;
+      docker push tomaer/oracle-java:7-edge-utc-aliyun-80b15-jdk-dcevm;
+      docker push tomaer/oracle-java:7-edge-utc-aliyun-80b15-server-jre;
+      
     fi
